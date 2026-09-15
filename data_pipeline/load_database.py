@@ -1,6 +1,8 @@
 import pandas as pd
 import sqlite3
 
+import os
+
 
 # ============================================================
 # SQL QUERIES
@@ -173,6 +175,44 @@ print(
     "Do SQL JOIN and Pandas merge match:",
     sql_join_compare.equals(pandas_merge_compare)
 )
+
+
+# SAVE QUERY RESULTS
+output_folder = "data_pipeline/outputs/query_results"
+
+os.makedirs(output_folder, exist_ok=True)
+
+result1.to_csv(
+    f"{output_folder}/expensive_books.csv",
+    index=False
+)
+
+result2.to_csv(
+    f"{output_folder}/top_books.csv",
+    index=False
+)
+
+result3.to_csv(
+    f"{output_folder}/categories.csv",
+    index=False
+)
+
+result4.to_csv(
+    f"{output_folder}/price_range.csv",
+    index=False
+)
+
+result5.to_csv(
+    f"{output_folder}/books_with_categories.csv",
+    index=False
+)
+
+merged.to_csv(
+    f"{output_folder}/pandas_merge.csv",
+    index=False
+)
+
+print("\nQuery results saved successfully.")
 
 
 # CLOSE DATABASE CONNECTION

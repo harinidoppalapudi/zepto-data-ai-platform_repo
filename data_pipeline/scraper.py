@@ -141,6 +141,11 @@ if __name__ == "__main__":
 
     print(df.head())
     print(f"Total books: {len(df)}")
-    print(
-        f"Categories: {df['category'].nunique()}"
+    print(f"Categories: {df['category'].nunique()}")
+
+    df.to_csv(
+        "data_pipeline/outputs/scraped_data.csv",
+        index=False, encoding="utf-8"
     )
+
+    print("Scraped data saved successfully.")
